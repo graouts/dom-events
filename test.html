@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="build/build.js" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+
+        var DOM = require("dom-events");
+
+        // Create a custom class that mixes in EventTarget.
+
+        function Custom() {
+            DOM.EventTarget(this);
+        }
+
+        Custom.prototype = {
+            constructor: Custom,
+            __proto__: DOM.EventTarget.prototype,
+
+            handleEvent: function(event)
+            {
+                console.log(event.type, "handleEvent");
+            },
+
+            specificEventHandler: function(event)
+            {
+                console.log(event.type, "specific scoped function");
+            }
+        }
+
+        // Test the API.
+
+        var eventTarget = new Custom;
+
+        function handleEvent(event)
+        {
+            console.log(event.type, "simple function");
+            event.stopPropagation();
+            event.preventDefault();
+        }
+
+        function cancelledHandleEvent(event)
+        {
+            console.log(event.type, "this function shouldn't be called");
+        }
+
+        eventTarget.addEventListener("foo", eventTarget);
+        eventTarget.addEventListener("foo", eventTarget.specificEventHandler, eventTarget);
+        eventTarget.addEventListener("foo", handleEvent);
+        eventTarget.addEventListener("foo", cancelledHandleEvent);
+
+        console.log("event default action was was prevented?", eventTarget.dispatchEvent(new DOM.Event("foo")));
+
+        eventTarget.removeEventListener("foo", eventTarget);
+        eventTarget.removeEventListener("foo", eventTarget.specificEventHandler, eventTarget);
+        eventTarget.removeEventListener("foo", handleEvent);
+        eventTarget.removeEventListener("foo", cancelledHandleEvent);
+
+        eventTarget.dispatchEvent(new DOM.Event("foo"));
+
+    </script>
+</head>
+<body>
+</body>
+</html>

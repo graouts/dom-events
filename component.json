@@ -1,0 +1,14 @@
+{
+    "name": "dom-events",
+    "repo": "graouts/dom-events",
+    "description": "An implementation of W3C DOM Events",
+    "version": "0.0.1",
+    "keywords": [],
+    "dependencies": {},
+    "development": {},
+    "license": "MIT",
+    "main": "index.js",
+    "scripts": [
+        "index.js"
+    ]
+}
