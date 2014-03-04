@@ -1,7 +1,13 @@
-dom-events
-==========
+
+# dom-events
 
 Implementation of W3C DOM Events as a JavaScript component.
+
+## Installation
+
+  Install with [component(1)](http://component.io):
+
+    $ component install graouts/dom-events
 
 # Usage
 
