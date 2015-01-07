@@ -1,0 +1,9 @@
+{
+    "name": "dom-events",
+    "main": "index.js",
+    "version": "0.0.1",
+    "homepage": "https://github.com/graouts/dom-events",
+    "authors": ["Antoine Quint <antoine@graougraou.com>"],
+    "description": "An implementation of W3C DOM Events",
+    "license": "MIT"
+}
